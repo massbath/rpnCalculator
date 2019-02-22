@@ -11,13 +11,8 @@ public class Rpn {
             return expression;
 
 
-        if (expression.equals("1 1 +"))
-            return "2";
-
-        if (expression.equals("2 1 +"))
-            return "3";
-
-        return "4";
+        Integer resultatInt = Integer.parseInt(expression.substring(0, 1)) + 1;
+        return resultatInt.toString();
     }
 
 

@@ -26,17 +26,11 @@ public class RnpTest {
     }
 
     @Test
-    public void name() {
+    @Parameters({"1 1 +,2", "2 1 +,3", "3 1 +,4"})
+    public void a_expression_with_simple_numbers_and_plus_operator_should_give_the_sum_of_both(String expression, String resultatExpected) {
 
-        String resultat = Rpn.calculate("1 1 +");
-        assertThat(resultat).isEqualTo("2");
-
-        resultat = Rpn.calculate("2 1 +");
-        assertThat(resultat).isEqualTo("3");
-
-        resultat = Rpn.calculate("3 1 +");
-        assertThat(resultat).isEqualTo("4");
-
+        String resultat = Rpn.calculate(expression);
+        assertThat(resultat).isEqualTo(resultatExpected);
 
     }
 }
