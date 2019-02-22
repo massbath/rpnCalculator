@@ -26,7 +26,7 @@ public class RnpTest {
     }
 
     @Test
-    @Parameters({"1 1 +,2", "2 1 +,3", "3 1 +,4"})
+    @Parameters({"1 1 +,2", "2 1 +,3", "3 1 +,4", "1 3 +,4", "1 6 +,7"})
     public void a_expression_with_simple_numbers_and_plus_operator_should_give_the_sum_of_both(String expression, String resultatExpected) {
 
         String resultat = Rpn.calculate(expression);
