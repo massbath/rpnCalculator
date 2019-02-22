@@ -33,4 +33,13 @@ public class RnpTest {
         assertThat(resultat).isEqualTo(resultatExpected);
 
     }
+
+    @Test
+    @Parameters({"1 1 -,0"})
+    public void a_expression_with_simple_numbers_and_minus_operator_should_give_the_sum_of_both(String expression, String resultatExpected) {
+
+        String resultat = Rpn.calculate(expression);
+        assertThat(resultat).isEqualTo(resultatExpected);
+
+    }
 }
