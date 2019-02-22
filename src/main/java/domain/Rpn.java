@@ -21,9 +21,13 @@ public class Rpn {
         int firstOperand = Integer.parseInt(partsOfExpression[0]);
         int secondOperand = Integer.parseInt(partsOfExpression[1]);
 
-        Integer resultatInt = firstOperand + secondOperand;
+        Integer resultatInt = addition(firstOperand, secondOperand);
 
         return resultatInt.toString();
+    }
+
+    private static int addition(int firstOperand, int secondOperand) {
+        return firstOperand + secondOperand;
     }
 
 
