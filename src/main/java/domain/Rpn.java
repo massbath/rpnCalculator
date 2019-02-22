@@ -2,7 +2,7 @@ package domain;
 
 public class Rpn {
 
-    private final static String patternResolvableExpression = "[0-9] [0-9] [+]";
+    private final static String patternResolvableExpression = "[0-9]+ [0-9]+ [+]";
 
 
     public static String calculate(String expression) {
@@ -16,8 +16,10 @@ public class Rpn {
     private static String compute(String expression) {
 
 
-        int firstOperand = Integer.parseInt(expression.substring(0, 1));
-        int secondOperand = Integer.parseInt(expression.substring(2, 3));
+        String[] partsOfExpression = expression.split(" ");
+
+        int firstOperand = Integer.parseInt(partsOfExpression[0]);
+        int secondOperand = Integer.parseInt(partsOfExpression[1]);
 
         Integer resultatInt = firstOperand + secondOperand;
 
