@@ -25,5 +25,18 @@ public class RnpTest {
         assertThat(resultat).isEqualTo(expression);
     }
 
+    @Test
+    public void name() {
 
+        String resultat = Rpn.calculate("1 1 +");
+        assertThat(resultat).isEqualTo("2");
+
+        resultat = Rpn.calculate("2 1 +");
+        assertThat(resultat).isEqualTo("3");
+
+        resultat = Rpn.calculate("3 1 +");
+        assertThat(resultat).isEqualTo("4");
+
+
+    }
 }
