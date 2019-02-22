@@ -35,8 +35,17 @@ public class RnpTest {
     }
 
     @Test
-    @Parameters({"1 1 -,0"})
+    @Parameters({"1 1 -,0", "1 2 -,-1"})
     public void a_expression_with_simple_numbers_and_minus_operator_should_give_the_sum_of_both(String expression, String resultatExpected) {
+
+        String resultat = Rpn.calculate(expression);
+        assertThat(resultat).isEqualTo(resultatExpected);
+
+    }
+
+    @Test
+    @Parameters({"20 5 /,4", "1 1 /,1", "3 4 /,0"})
+    public void a_expression_with_simple_numbers_and_divide_operator_should_give_the_sum_of_both(String expression, String resultatExpected) {
 
         String resultat = Rpn.calculate(expression);
         assertThat(resultat).isEqualTo(resultatExpected);
