@@ -49,7 +49,20 @@ public class RnpTest {
 
     @Test
     @Parameters({"20 5 /,4", "1 1 /,1", "3 4 /,0"})
-    public void a_expression_with_simple_numbers_and_divide_operator_should_give_the_sum_of_both(String expression, String resultatExpected) {
+    public void a_expression_with_simple_numbers_and_divide_operator_should_give_the_substract_of_both(String expression, String resultatExpected) {
+
+        String resultat = Rpn.calculate(expression);
+        assertThat(resultat).isEqualTo(resultatExpected);
+
+    }
+
+    @Test
+    @Parameters({
+            "20 5 *,100",
+            "1 1 *,1",
+            "3 4 *,12"
+    })
+    public void a_expression_with_simple_numbers_and_multiply_operator_should_give_the_multiplev_of_both(String expression, String resultatExpected) {
 
         String resultat = Rpn.calculate(expression);
         assertThat(resultat).isEqualTo(resultatExpected);

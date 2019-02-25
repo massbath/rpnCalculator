@@ -7,8 +7,9 @@ import java.util.stream.Stream;
 public enum Operator {
 
     ADDITION("+", (firstOperand, secondOperand) -> firstOperand + secondOperand),
-    SUBSTRACTION("-", (firstOperand, secondOperand) -> firstOperand - secondOperand),
-    DIVISION("/", (firstOperand, secondOperand) -> firstOperand / secondOperand);
+    SUBTRACTION("-", (firstOperand, secondOperand) -> firstOperand - secondOperand),
+    DIVISION("/", (firstOperand, secondOperand) -> firstOperand / secondOperand),
+    MULTIPLICATION("*", (firstOperand, secondOperand) -> firstOperand * secondOperand);
 
 
     private final String sign;
