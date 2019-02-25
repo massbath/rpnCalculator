@@ -2,8 +2,8 @@ package domain;
 
 class InvalidOperation extends Operation {
 
-    InvalidOperation(int firstOperand, int secondOperand, String operator) {
-        super(firstOperand, secondOperand, operator);
+    public InvalidOperation(int firstOperand, int secondOperand, Operator operatorEnum) {
+        super(firstOperand, secondOperand, operatorEnum);
     }
 
     @Override

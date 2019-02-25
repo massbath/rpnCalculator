@@ -1,28 +1,25 @@
 package domain;
 
+import java.util.Optional;
+
+import static domain.Operator.DIVISION;
+
 class Operation {
 
     private final int firstOperand;
     private final int secondOperand;
-    private final String operator;
+    private final Operator operatorEnum;
 
 
-    Operation(int firstOperand, int secondOperand, String operator) {
+    Operation(int firstOperand, int secondOperand, Operator operatorEnum) {
         this.firstOperand = firstOperand;
         this.secondOperand = secondOperand;
-        this.operator = operator;
+        this.operatorEnum = operatorEnum;
     }
 
 
     int makeOperation() {
-        if (operator.equals("+")) {
-            return firstOperand + secondOperand;
-        }
-
-        if (operator.equals("-"))
-            return firstOperand - secondOperand;
-
-        return firstOperand / secondOperand;
+        return operatorEnum.operate.apply(firstOperand, secondOperand);
     }
 
     public boolean isValid() {
@@ -33,7 +30,7 @@ class Operation {
     static final class Builder {
         private int firstOperand;
         private int secondOperand;
-        private String operator;
+        private Operator operatorEnum;
 
         private Builder() {
         }
@@ -53,16 +50,21 @@ class Operation {
         }
 
         Builder withOperator(String val) {
-            operator = val;
+            Optional<Operator> operator = Operator.fromValue(val);
+
+
+            operatorEnum = operator.get();
+
             return this;
+
         }
 
         Operation build() {
-            if (operator.equals("/") && secondOperand == 0) {
-                return new InvalidOperation(firstOperand, secondOperand, operator);
+            if (operatorEnum == DIVISION && secondOperand == 0) {
+                return new InvalidOperation(firstOperand, secondOperand, operatorEnum);
             }
 
-            return new Operation(firstOperand, secondOperand, operator);
+            return new Operation(firstOperand, secondOperand, operatorEnum);
         }
     }
 }
