@@ -7,7 +7,7 @@ import static domain.Operation.Builder.newBuilder;
 
 public class Rpn {
 
-    private final static String patternResolvableExpression = "([0-9]+ [0-9]+ [+-/])";
+    private final static String patternResolvableExpression = "(-?[0-9]+ -?[0-9]+ [+-/])";
     private static final String SEPARATOR = " ";
     private static final int FIRST_OPERAND_POSITION = 0;
     private static final int SECOND_OPERAND_POSITION = 1;
