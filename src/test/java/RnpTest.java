@@ -57,4 +57,17 @@ public class RnpTest {
         String resultat = Rpn.calculate("2 0 /");
         assertThat(resultat).isEqualTo("2 0 /");
     }
+
+    @Test
+    @Parameters({
+            "2 2 + 2 -,2",
+            "2 2 + 2 - 3 +,5",
+            "2 2 + 2 - 3 + 5 /,1",
+            "2 2 + 2 - 3 + 5 / 189 +,190",
+            "2 2 + 2 - 3 + 5 / 189 + 0 /,190 0 /",
+    })
+    public void a_expression_with_multiple_operation_should_give_the_result_of_all_operation(String expression, String resultatExpected) {
+        String resultat = Rpn.calculateBigExpression(expression);
+        assertThat(resultat).isEqualTo(resultatExpected);
+    }
 }

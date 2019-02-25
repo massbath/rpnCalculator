@@ -1,14 +1,18 @@
 package domain;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static domain.Operation.Builder.newBuilder;
 
 public class Rpn {
 
-    private final static String patternResolvableExpression = "[0-9]+ [0-9]+ [+-/]";
+    private final static String patternResolvableExpression = "([0-9]+ [0-9]+ [+-/])";
     private static final String SEPARATOR = " ";
     private static final int FIRST_OPERAND_POSITION = 0;
     private static final int SECOND_OPERAND_POSITION = 1;
     private static final int OPERATOR_POSITION = 2;
+    private static Pattern pattern = Pattern.compile(patternResolvableExpression);
 
 
     public static String calculate(String expression) {
@@ -50,4 +54,22 @@ public class Rpn {
     }
 
 
+    public static String calculateBigExpression(String bigExpression) {
+        Matcher matcher = pattern.matcher(bigExpression);
+        String resultat = bigExpression;
+
+        while (matcher.find()) {
+            String resultatSubOperation = calculate(matcher.group());
+            resultat = matcher.replaceFirst(resultatSubOperation);
+
+            if (resultatSubOperation.matches(patternResolvableExpression)) {
+                return resultat;
+            }
+
+            matcher.reset(resultat);
+        }
+
+
+        return resultat;
+    }
 }
