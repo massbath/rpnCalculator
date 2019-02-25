@@ -1,5 +1,7 @@
 package domain;
 
+import static domain.Operation.Builder.newBuilder;
+
 public class Rpn {
 
     private final static String patternResolvableExpression = "[0-9]+ [0-9]+ [+-/]";
@@ -22,21 +24,11 @@ public class Rpn {
         int secondOperand = Integer.parseInt(partsOfExpression[1]);
         String operator = partsOfExpression[2];
 
-        Integer resultatInt = makeOperation(firstOperand, secondOperand, operator);
-        return resultatInt.toString();
+        Operation operation = newBuilder().withFirstOperand(firstOperand).withSecondOperand(secondOperand).withOperator(operator).build();
+        int resultatInt = operation.makeOperation();
 
-    }
+        return Integer.toString(resultatInt);
 
-    private static int makeOperation(int firstOperand, int secondOperand, String operator) {
-        if (operator.equals("+")) {
-            return firstOperand + secondOperand;
-        }
-
-
-        if (operator.equals("-"))
-            return firstOperand - secondOperand;
-
-        return firstOperand / secondOperand;
     }
 
 
