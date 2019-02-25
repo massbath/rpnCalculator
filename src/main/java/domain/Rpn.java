@@ -16,6 +16,25 @@ public class Rpn {
 
 
     public static String calculate(String expression) {
+        Matcher matcher = pattern.matcher(expression);
+        String resultat = expression;
+
+        while (matcher.find()) {
+            String resultatSubOperation = calculateSimpleExpression(matcher.group());
+            resultat = matcher.replaceFirst(resultatSubOperation);
+
+            if (resultatSubOperation.matches(patternResolvableExpression)) {
+                return resultat;
+            }
+
+            matcher.reset(resultat);
+        }
+
+
+        return resultat;
+    }
+
+    public static String calculateSimpleExpression(String expression) {
 
         if (isAValidExpression(expression))
             return expression;
@@ -54,22 +73,5 @@ public class Rpn {
     }
 
 
-    public static String calculateBigExpression(String bigExpression) {
-        Matcher matcher = pattern.matcher(bigExpression);
-        String resultat = bigExpression;
 
-        while (matcher.find()) {
-            String resultatSubOperation = calculate(matcher.group());
-            resultat = matcher.replaceFirst(resultatSubOperation);
-
-            if (resultatSubOperation.matches(patternResolvableExpression)) {
-                return resultat;
-            }
-
-            matcher.reset(resultat);
-        }
-
-
-        return resultat;
-    }
 }
