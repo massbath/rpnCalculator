@@ -6,7 +6,8 @@ class Operation {
     private final int secondOperand;
     private final String operator;
 
-    protected Operation(int firstOperand, int secondOperand, String operator) {
+
+    Operation(int firstOperand, int secondOperand, String operator) {
         this.firstOperand = firstOperand;
         this.secondOperand = secondOperand;
         this.operator = operator;
@@ -29,7 +30,7 @@ class Operation {
     }
 
 
-    public static final class Builder {
+    static final class Builder {
         private int firstOperand;
         private int secondOperand;
         private String operator;
