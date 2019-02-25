@@ -20,7 +20,8 @@ public class Rpn {
         String resultat = expression;
 
         while (matcher.find()) {
-            String resultatSubOperation = calculateSimpleExpression(matcher.group());
+
+            String resultatSubOperation = calculateSubOperation(matcher.group());
             resultat = matcher.replaceFirst(resultatSubOperation);
 
             if (resultatSubOperation.matches(patternResolvableExpression)) {
@@ -34,19 +35,7 @@ public class Rpn {
         return resultat;
     }
 
-    public static String calculateSimpleExpression(String expression) {
-
-        if (isAValidExpression(expression))
-            return expression;
-
-        return compute(expression);
-    }
-
-    private static boolean isAValidExpression(String expression) {
-        return !expression.matches(patternResolvableExpression);
-    }
-
-    private static String compute(String expression) {
+    private static String calculateSubOperation(String expression) {
 
         Operation operation = extractOperation(expression);
 
