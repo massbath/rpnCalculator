@@ -1,5 +1,7 @@
 package domain;
 
+import domain.exception.UnknownOperatorException;
+
 import java.util.Optional;
 
 import static domain.Operator.DIVISION;
@@ -52,6 +54,8 @@ class Operation {
         Builder withOperator(String val) {
             Optional<Operator> operator = Operator.fromValue(val);
 
+            if (!operator.isPresent())
+                throw new UnknownOperatorException("Unknown operator " + val + " you should add this operator in enum Operator");
 
             operatorEnum = operator.get();
 
