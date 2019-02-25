@@ -51,4 +51,10 @@ public class RnpTest {
         assertThat(resultat).isEqualTo(resultatExpected);
 
     }
+
+    @Test
+    public void a_expression_with_number_and_divide_operator_which_is_invalid_should_give_the_same_expressions() {
+        String resultat = Rpn.calculate("2 0 /");
+        assertThat(resultat).isEqualTo("2 0 /");
+    }
 }

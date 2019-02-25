@@ -25,8 +25,12 @@ public class Rpn {
         String operator = partsOfExpression[2];
 
         Operation operation = newBuilder().withFirstOperand(firstOperand).withSecondOperand(secondOperand).withOperator(operator).build();
-        int resultatInt = operation.makeOperation();
 
+        if (!operation.isValid()) {
+            return expression;
+        }
+
+        int resultatInt = operation.makeOperation();
         return Integer.toString(resultatInt);
 
     }

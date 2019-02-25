@@ -6,7 +6,7 @@ class Operation {
     private final int secondOperand;
     private final String operator;
 
-    private Operation(int firstOperand, int secondOperand, String operator) {
+    protected Operation(int firstOperand, int secondOperand, String operator) {
         this.firstOperand = firstOperand;
         this.secondOperand = secondOperand;
         this.operator = operator;
@@ -22,6 +22,10 @@ class Operation {
             return firstOperand - secondOperand;
 
         return firstOperand / secondOperand;
+    }
+
+    public boolean isValid() {
+        return true;
     }
 
 
@@ -53,6 +57,10 @@ class Operation {
         }
 
         Operation build() {
+            if (operator.equals("/") && secondOperand == 0) {
+                return new InvalidOperation(firstOperand, secondOperand, operator);
+            }
+
             return new Operation(firstOperand, secondOperand, operator);
         }
     }
