@@ -46,8 +46,8 @@ public class Rpn {
     private static Operation extractOperation(String expression) {
         String[] partsOfExpression = expression.split(SEPARATOR);
 
-        int firstOperand = Integer.parseInt(partsOfExpression[FIRST_OPERAND_POSITION]);
-        int secondOperand = Integer.parseInt(partsOfExpression[SECOND_OPERAND_POSITION]);
+        Integer firstOperand = Integer.parseInt(partsOfExpression[FIRST_OPERAND_POSITION]);
+        Integer secondOperand = Integer.parseInt(partsOfExpression[SECOND_OPERAND_POSITION]);
         String operator = partsOfExpression[OPERATOR_POSITION];
 
         return newBuilder()

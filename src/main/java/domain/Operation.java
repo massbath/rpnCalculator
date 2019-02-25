@@ -8,12 +8,12 @@ import static domain.Operator.DIVISION;
 
 class Operation {
 
-    private final int firstOperand;
-    private final int secondOperand;
+    private final Integer firstOperand;
+    private final Integer secondOperand;
     private final Operator operatorEnum;
 
 
-    protected Operation(int firstOperand, int secondOperand, Operator operatorEnum) {
+    protected Operation(Integer firstOperand, Integer secondOperand, Operator operatorEnum) {
         this.firstOperand = firstOperand;
         this.secondOperand = secondOperand;
         this.operatorEnum = operatorEnum;
@@ -30,8 +30,8 @@ class Operation {
 
 
     static final class Builder {
-        private int firstOperand;
-        private int secondOperand;
+        private Integer firstOperand;
+        private Integer secondOperand;
         private Operator operatorEnum;
 
         private Builder() {
@@ -41,12 +41,12 @@ class Operation {
             return new Builder();
         }
 
-        Builder withFirstOperand(int val) {
+        Builder withFirstOperand(Integer val) {
             firstOperand = val;
             return this;
         }
 
-        Builder withSecondOperand(int val) {
+        Builder withSecondOperand(Integer val) {
             secondOperand = val;
             return this;
         }
