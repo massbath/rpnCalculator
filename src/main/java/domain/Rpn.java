@@ -14,13 +14,11 @@ public class Rpn {
     private static final int OPERATOR_POSITION = 2;
     private static Pattern pattern = Pattern.compile(patternResolvableExpression);
 
-
     public static String calculate(String expression) {
         Matcher matcher = pattern.matcher(expression);
         String resultat = expression;
 
         while (matcher.find()) {
-
             String resultatSubOperation = calculateSubOperation(matcher.group());
             resultat = matcher.replaceFirst(resultatSubOperation);
 
@@ -31,12 +29,10 @@ public class Rpn {
             matcher.reset(resultat);
         }
 
-
         return resultat;
     }
 
     private static String calculateSubOperation(String expression) {
-
         Operation operation = extractOperation(expression);
 
         if (!operation.isValid()) {

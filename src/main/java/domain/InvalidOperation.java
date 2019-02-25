@@ -2,7 +2,7 @@ package domain;
 
 class InvalidOperation extends Operation {
 
-    public InvalidOperation(int firstOperand, int secondOperand, Operator operatorEnum) {
+    protected InvalidOperation(int firstOperand, int secondOperand, Operator operatorEnum) {
         super(firstOperand, secondOperand, operatorEnum);
     }
 

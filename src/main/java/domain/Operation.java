@@ -13,7 +13,7 @@ class Operation {
     private final Operator operatorEnum;
 
 
-    Operation(int firstOperand, int secondOperand, Operator operatorEnum) {
+    protected Operation(int firstOperand, int secondOperand, Operator operatorEnum) {
         this.firstOperand = firstOperand;
         this.secondOperand = secondOperand;
         this.operatorEnum = operatorEnum;
